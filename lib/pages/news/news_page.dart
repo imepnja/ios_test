@@ -19,50 +19,52 @@ class _NewsPageState extends State<NewsPage> {
           decoration: BoxDecoration(
               color: cDark,
               borderRadius: BorderRadius.vertical(bottom: Radius.circular(25))),
-          padding: EdgeInsets.fromLTRB(0, 40, 0, 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 1,
-                child: InkWell(
-                    onTap: () => setState(() => _showLocalNews = true),
+          padding: EdgeInsets.fromLTRB(0, 10, 0, 15),
+          child: SafeArea(
+                      child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: InkWell(
+                      onTap: () => setState(() => _showLocalNews = true),
+                      child: Text(
+                        'My Gym',
+                        style: TextStyle(
+                            color: cWhite,
+                            fontSize: 17,
+                            fontWeight: _showLocalNews
+                                ? FontWeight.w600
+                                : FontWeight.w300),
+                        textAlign: TextAlign.right,
+                      )),
+                ),
+                SizedBox(width: 10),
+                Text('|', style: TextStyle(color: cWhite, fontWeight: FontWeight.w200),),
+                SizedBox(width: 10),
+                Expanded(
+                  flex: 1,
+                  child: InkWell(
+                    // radius: 2.0,
+                    onTap: () => setState(() {
+                      print('tap');
+                      _showLocalNews = false;
+                      print(_showLocalNews);
+                    }),
                     child: Text(
-                      'My Gym',
+                      'The world',
                       style: TextStyle(
                           color: cWhite,
-                          fontSize: 17,
-                          fontWeight: _showLocalNews
+                          fontSize: 16,
+                          fontWeight: !_showLocalNews
                               ? FontWeight.w600
                               : FontWeight.w300),
-                      textAlign: TextAlign.right,
-                    )),
-              ),
-              SizedBox(width: 10),
-              Text('|', style: TextStyle(color: cWhite, fontWeight: FontWeight.w200),),
-              SizedBox(width: 10),
-              Expanded(
-                flex: 1,
-                child: InkWell(
-                  // radius: 2.0,
-                  onTap: () => setState(() {
-                    print('tap');
-                    _showLocalNews = false;
-                    print(_showLocalNews);
-                  }),
-                  child: Text(
-                    'The world',
-                    style: TextStyle(
-                        color: cWhite,
-                        fontSize: 16,
-                        fontWeight: !_showLocalNews
-                            ? FontWeight.w600
-                            : FontWeight.w300),
-                    textAlign: TextAlign.left,
+                      textAlign: TextAlign.left,
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
         Expanded(
